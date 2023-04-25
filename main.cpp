@@ -8,8 +8,14 @@
 
 #ifdef MSDFGEN_STANDALONE
 
+#ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
+#endif
+
+#ifndef _CRT_SECURE_NO_WARNINGS
 #define _CRT_SECURE_NO_WARNINGS
+#endif
+
 #include <cstdio>
 #include <cmath>
 #include <cstring>
