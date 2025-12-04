@@ -32,3 +32,6 @@ bin-int/
 *.sln
 *.vcxproj
 *.vcxproj.filters
+
+Makefile
+*.make
