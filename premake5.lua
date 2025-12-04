@@ -85,6 +85,42 @@ project "freetype"
 		optimize "on"
         symbols "off"
 
+project "tinyxml2"
+	kind "StaticLib"
+	language "C++"
+	cppdialect "C++17"
+    staticruntime "off"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files
+	{
+		"lib/tinyxml2.cpp",
+		"include/tinyxml2.h"
+	}
+
+	includedirs
+	{
+		"include"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		runtime "Release"
+		optimize "on"
+        symbols "off"
+
 project "msdfgen"
 	kind "StaticLib"
 	language "C++"
@@ -102,7 +138,8 @@ project "msdfgen"
 		"ext/**.h",
 		"ext/**.hpp",
 		"ext/**.cpp",
-		"lib/**.cpp",
+		-- tinyxml2 has been outlined as a separate dependency declaration.
+		"lib/lodepng.cpp",
 		"include/**.h"
 	}
 
@@ -119,7 +156,8 @@ project "msdfgen"
 
 	links
 	{
-		"freetype"
+		"freetype",
+		"tinyxml2"
 	}
 
 	filter "system:windows"
