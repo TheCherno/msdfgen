@@ -72,6 +72,9 @@ project "freetype"
 	filter "system:windows"
 		systemversion "latest"
 
+	filter "system:macosx"
+		defines { "TARGET_OS_MAC" }
+
 	filter "configurations:Debug"
 		runtime "Debug"
 		symbols "on"
